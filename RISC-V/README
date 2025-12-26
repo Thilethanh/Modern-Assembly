@@ -1,0 +1,17 @@
+Setup: 
+
+sudo apt install gcc-riscv64-linux-gnu
+sudo apt install qemu-user
+
+OR a long setup and get yourself an ESP32 board.
+My ESP32-WROOM board is dead because Aliexpress sucks.
+
+---COMPILE:
+
+rm -rf hello.s
+riscv64-linux-gnu-as hello.s -o hello.o
+riscv64-linux-gnu-gcc -o hello hello.o -nostdlib -static
+
+---RUN:
+
+qemu-riscv64 ./hello
